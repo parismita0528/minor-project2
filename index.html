@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+
+<style>
+body {
+  background-image: url("C:\Users\Dell\Desktop\loan-prediction\Loan-apps.png ");
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;
+  background-color: skyblue;
+}
+</style>
+
+<body>
+
+<div>
+<div class="col 12 m10 offset-ml center">
+    <img src="C:\Users\Dell\Desktop\loan-prediction\Loan-apps.png"  width="800" height="300">
+   <div class="col 12 m10 offset-ml center">
+            <a href="{{url_for('index')}}" class="btn btn-small red white-text waves-effect waves-dark">Reset</a>
+            
+        </div>
+     </div>
+    </div>
+</div>
+</div>
+<section class="section section-signup">
+        <div class="container">
+          <div class="row">
+           
+            <div class="col s12 m4">
+              <div class="card-panel light red lighten-5 black-text text-darken-5 ">
+                <form action="{{ url_for('analyze')}}" method="POST">
+                  
+                   <div class="input-field">
+                   <p class="text-field">
+                   <label for="Gender">Gender(Male-1 Female-0)</label>
+                        <input type="text" id="GenderInput" name="Gender" >
+                
+                
+            </div>
+                   <div class="input-field">
+                   <p class="text-field">
+                   <label for="maritalstatus">MaritalStatus</label>
+                        <input type="text" id="maritalstatus" name="MaritalStatus">
+                        
+                        
+              </div>
+                   <div class="input-field">
+                   <p class="text-field">
+                   <label for="Education">Education</label>
+                        <input type="text" id="EducationInput" name="Education">
+                        
+                        
+            </div>
+                   <div class="input-field">
+                   <p class="text-field">
+                   <label for="SelfEmployed">SelfEmployed</label>
+                        <input type="text" id="SelfEmployedInput" name="SelfEmployed">
+                        
+                        
+            </div>
+                   <div class="input-field">
+                   <p class="text-field">
+                   <label for="PropertyArea">PropertyArea</label>
+                        <input type="text" id="PropertyAreaInput" name="PropertyArea">
+        </div>
+                   <div class="input-field">
+                   <p class="text-field">
+                   <label for="LoanAmount">LoanAmount</label>
+                        <input type="text" id="LoanAmountInput" name="LoanAmount">
+            </div>
+            <div class="input-field">
+              <p class="text-field">
+              <label for="CreditHistory">CreditHistory</label>
+                   <input type="text" id="CreditHistoryInput" name="CreditHistory">
+       </div>
+
+       <div class="input-field">
+        <p class="text-field">
+        <label for="Dependence">Dependence</label>
+             <input type="text" id="DependenceInput" name="Dependence">
+ </div>
+
+            
+            
+            
+            
+            
+             <div class="input-field">
+                    <select id="role" name="model_choice">
+                      <option value="" disabled selected>Select Model</option>
+                        <option value="NBClassifier">Naive-Baye's</option>
+
+                    </select>
+                    <label for="role">Select ML Algorithm</label>
+                  </div>
+                  <button class="btn btn-small black white-text waves-effect waves-dark" type="submit" name="action">Predict
+  </button>
+                 
+                </form>
+              </div>
+            </div>
+  <div class="col s12 m4 offers">
+                <h5 style="color: #ffffff;">Prediction</h5>
+                  <div class="collection" role="alert">
+                    <p  class="collection-item active black">Predicted result: {{ result_prediction }} 
+                    {% if result_prediction == [0] %}
+                     <p  class="collection-item active light green">Congratulation!!<br>You are eligible to apply for Loan.
+                     
+                     {% elif result_prediction == [1]  %}
+                          <p  class="collection-item red">You are not eligible for Loan.<br>Please consult your bank for futher information. 
+                    {% else %}    
+                       
+               
+                       {% endif%} 
+                    </p>
+                </div>     
+                
+             
+            </div>
+          </div>
+        </div>
+        </div>
+      </section>
+      
+      
+
+      {% block scripts %}
+      {{super()}}
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+       <!-- Compiled and minified JavaScript -->
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+      <!-- <script type="text/javascript">
+           document.addEventListener('DOMContentLoaded', function() {
+          var elems = document.querySelectorAll('select');
+          var instances = M.FormSelect.init(elems, options);
+        });
+      </script> -->
+     
+      <script>
+          // Or with jQuery
+     
+        $(document).ready(function(){
+          $('select').formSelect();
+        });
+      </script>
+     
+      {% endblock %}
+
+
+</body>
+</html>    
+    
+            
+            
+            
+            
